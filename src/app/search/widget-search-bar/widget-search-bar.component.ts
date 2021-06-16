@@ -23,7 +23,7 @@ export class WidgetSearchBarComponent implements OnInit {
 
   constructor(private searchService: SearchService, private router: Router) {
     this.searchResults$ = this.term$.pipe(
-      debounceTime(500),
+      debounceTime(100),
       distinctUntilChanged(),
       switchMap((term) =>
         term.length == 0 ? of([]) : this.searchService.search(term)
